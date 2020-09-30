@@ -1,26 +1,28 @@
-  <h1>Fill in for storage in the base</h1>
+<h1>Fill in for storage in the base</h1>
 <form>
   <div class="form-group">
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" placeholder="First name" required>
+        <label for="first-name">First name</label>
+        <input type="text" class="form-control" placeholder="First name" id="first-name" >
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Last name" required>
+        <label for="last-name">Last name</label>
+        <input type="text" class="form-control" placeholder="Last name" id="last-name" >
       </div>
     </div>
   </div>
   <div class="form-group">
     <label for="phone-number">Phone Number</label>
-    <input type="number" class="form-control" id="phone-number" placeholder="+7(777)777-77-77" required>
+    <input type="number" class="form-control" id="phone-number" placeholder="+7(777)777-77-77" >
   </div>
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+    <input type="email" class="form-control" id="email" placeholder="name@example.com" >
   </div>
   <div class="form-group">
     <label for="formSelect">Select your organization</label>
-    <select multiple class="form-control" id="formSelect" required>
+    <select multiple class="form-control" id="formSelect" >
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -32,5 +34,6 @@
     <label for="formControlTextarea1">Your message(optional)</label>
     <textarea class="form-control" id="formControlTextarea1" rows="3"></textarea>
   </div>
-  <button class="btn btn-success" type="submit">Send</button>
+  <button class="btn btn-success" type="submit" >Send</button>
 </form>
+
