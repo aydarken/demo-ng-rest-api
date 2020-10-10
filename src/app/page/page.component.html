@@ -1,10 +1,19 @@
-<h1>Fill in for storage in the base</h1>
-<form>
+<p>Centimeters: <input type="text"
+                      [(ngModel)]="centimeters"/>
+  Inches : {{centimeters | conventer:'inc'}} </p>
+<p>Inches: <input type="text" [(ngModel)]="inches"/>
+  Centimeters : {{inches | conventer:'cm'}}
+</p>
+<hr>
+<h1>Fill in for storage in the base </h1>
+<h3>To {{isChecked ? 'show' : 'hide'}} form </h3>
+<input type="checkbox" [(ngModel)]="isChecked">
+<form *ngIf="isChecked">
   <div class="form-group">
     <div class="row">
       <div class="col">
         <label for="first-name">First name</label>
-        <input type="text" class="form-control" placeholder="First name" id="first-name" >
+        <input type="text" class="form-control" placeholder="First name" id="first-name">
       </div>
       <div class="col">
         <label for="last-name">Last name</label>
@@ -34,6 +43,6 @@
     <label for="formControlTextarea1">Your message(optional)</label>
     <textarea class="form-control" id="formControlTextarea1" rows="3"></textarea>
   </div>
-  <button class="btn btn-success" type="submit" >Send</button>
+  <button class="btn btn-success" type="submit">Send</button>
 </form>
 

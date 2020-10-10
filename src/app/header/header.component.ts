@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +6,14 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  toDate: Date = new Date();
+  isClicked: boolean = false;
+
+  showDate() {
+    this.isClicked = !this.isClicked;
+  }
+
   constructor() {
     this.log(`Header: constructor`);
   }

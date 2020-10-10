@@ -1,7 +1,11 @@
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" appChangeBg="color" changeBg="color">
   <div class="container">
     <h1 class="display-4">Welcome</h1>
+    <p *ngIf="isClicked">Current date : {{toDate | date:'medium'}}</p>
+
     <p class="lead">Create your own database for your users.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Create database</a>
+    <!--    <a class="btn btn-primary btn-lg" href="#" role="button">Create database</a>-->
+    <a class="btn btn-primary btn-lg" href="#" role="button" (click)="showDate()">{{!isClicked ? 'Show ' : 'Hide' }}
+      current date</a>
   </div>
 </div>

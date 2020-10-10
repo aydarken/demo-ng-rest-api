@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PageComponent } from './page/page.component';
 import {FormsModule} from "@angular/forms";
+import { ChangeBgDirective } from './header/change-bg.directive';
+import { ConventerPipe } from './page/conventer.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import {FormsModule} from "@angular/forms";
     NavbarComponent,
     FooterComponent,
     HeaderComponent,
-    PageComponent
+    PageComponent,
+    ChangeBgDirective,
+    ConventerPipe,
   ],
   imports: [
     BrowserModule,
