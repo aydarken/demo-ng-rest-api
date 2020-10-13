@@ -1,0 +1,17 @@
+.company{
+  width: 45%;
+  padding: 10px;
+  margin: 30px;
+  display: block;
+}
+.right{
+  float: right;
+}
+.feedback{
+  width: 40%;
+  padding: 20px;
+  margin: 0 auto 10vh;
+  border: 3px solid #a9aab0;
+  border-radius: 16px;
+}
+
