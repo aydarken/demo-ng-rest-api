@@ -6,12 +6,13 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  page: string = 'About';
+  page: string;
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.page = 'Home';
   }
 
 }

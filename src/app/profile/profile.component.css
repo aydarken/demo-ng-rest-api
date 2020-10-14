@@ -1,0 +1,26 @@
+.info{
+  width: 50%;
+}
+
+.left{
+  float: left;
+  margin: 30px;
+}
+.databases{
+  display: block;
+  width: 40%;
+  margin: 10vh 0;
+}
+.databases-list li{
+  list-style: none;
+  padding: 2vh;
+}
+.row{
+  margin: 4vh 0;
+}
+.create-database-form{
+  width: 50%;
+  padding: 40px;
+  border: 2px solid;
+  margin: 0 auto 4vh;
+}

@@ -1,19 +1,26 @@
-<div class="my-info">
-  <h1>My Profile</h1>
-  <img src="" alt="user photo">
-
-</div>
-<div class="my-database">
-  <h1>My databases</h1>
-  <li>my dbs</li>
+<div class="row">
+  <div class="info">
+    <h1>My Profile</h1>
+    <img [src]="profilePhoto" alt="user photo" width="160px" height="160px" class="left">
+    <div class="text-info">
+      <h3>{{fullName}}</h3>
+      <h3>{{companyName}}</h3>
+    </div>
+  </div>
+  <div class="databases">
+    <h1>My databases</h1>
+    <div class="databases-list" *ngFor="let database of databases">
+      <li>{{database}}</li>
+    </div>
+  </div>
 </div>
 <div class="create-database-form">
-  <h1>Fill in for storage in the base</h1>
-  <form>
+  <h1>Fill in for storage to create database</h1>
+  <form (ngSubmit)="addDatabase()">
     <div class="form-group">
       <div class="row">
         <div class="col">
-          <input type="text" class="form-control" placeholder="First name" required>
+          <input type="text" class="form-control" placeholder="Database name" [(ngModel)]="database" required>
         </div>
         <div class="col">
           <input type="text" class="form-control" placeholder="Last name" required>
@@ -29,17 +36,7 @@
       <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
     </div>
     <div class="form-group">
-      <label for="formSelect">Select your organization</label>
-      <select multiple class="form-control" id="formSelect" required>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="formControlTextarea1">Your message(optional)</label>
+      <label for="formControlTextarea1">Your message to clients</label>
       <textarea class="form-control" id="formControlTextarea1" rows="3"></textarea>
     </div>
     <button class="btn btn-success" type="submit">Send</button>
