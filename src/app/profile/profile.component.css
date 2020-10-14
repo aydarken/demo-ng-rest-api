@@ -1,7 +1,9 @@
 .info{
-  width: 50%;
+  width: 60%;
 }
-
+.text-info h3{
+  color: #000;
+}
 .left{
   float: left;
   margin: 30px;
