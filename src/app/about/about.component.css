@@ -1,5 +1,4 @@
 .company{
-  width: 45%;
   padding: 10px;
   margin: 30px;
   display: block;
@@ -13,5 +12,21 @@
   margin: 0 auto 10vh;
   border: 3px solid #a9aab0;
   border-radius: 16px;
+}
+.about-photo{
+  width: 400px;
+  height: 300px;
+  float: left;
+  padding: 10px;
+  margin: 30px;
+
+
+}
+.about-text{
+  width: 45%;
+  padding: 10px;
+  margin: 30px;
+  display: block;
+  float: left;
 }
 

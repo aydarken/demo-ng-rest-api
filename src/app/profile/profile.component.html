@@ -9,35 +9,46 @@
   </div>
   <div class="databases">
     <h1>My databases</h1>
-    <div class="databases-list" *ngFor="let database of databases">
-      <li>{{database}}</li>
+    <div class="databases-list" *ngFor="let databaseList of databaseList">
+      <span>
+        {{databaseList.databaseName}}
+      </span>
+      <div class="users" *ngFor="let user of userList">
+
+        <span *ngIf="databaseList.companyName == user.organization">
+          {{user.id + ' ' + user.firstName + ' ' + user.lastName + ' ' + user.email}}
+        </span>
+      </div>
     </div>
   </div>
 </div>
+
 <div class="create-database-form">
   <h1>Fill in for storage to create database</h1>
-  <form (ngSubmit)="addDatabase()">
+  <form #databaseForm=ngForm (ngSubmit)="addDatabase()">
     <div class="form-group">
       <div class="row">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Database name" [(ngModel)]="database" required>
+          <input type="text" class="form-control" name="databaseName" placeholder="Database name" [(ngModel)]="customerList.databaseName"
+                 required>
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="Last name" required>
+          <input type="text" class="form-control" name="companyName" placeholder="Company name" [(ngModel)]="customerList.companyName" required>
         </div>
       </div>
     </div>
     <div class="form-group">
       <label for="phone-number">Phone Number</label>
-      <input type="number" class="form-control" id="phone-number" placeholder="+7(777)777-77-77" required>
+      <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7(777)777-77-77" [(ngModel)]="customerList.phoneNumber" required>
     </div>
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" [(ngModel)]="customerList.email"
+             required>
     </div>
     <div class="form-group">
       <label for="formControlTextarea1">Your message to clients</label>
-      <textarea class="form-control" id="formControlTextarea1" rows="3"></textarea>
+      <textarea class="form-control" id="formControlTextarea1" name="message" rows="3" [(ngModel)]="customerList.message"></textarea>
     </div>
     <button class="btn btn-success" type="submit">Send</button>
   </form>

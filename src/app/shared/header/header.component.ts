@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HeaderDataService} from "../../services/header-data.service";
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,11 @@ import {Component, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
   page: string;
 
-  constructor() {
+  constructor(private headerData: HeaderDataService) {
   }
 
   ngOnInit(): void {
-    this.page = 'Home';
+    this.page = this.headerData.getCurrentPage();
   }
 
 }

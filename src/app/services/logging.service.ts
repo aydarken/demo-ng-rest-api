@@ -8,4 +8,5 @@ export class LoggingService {
     console.log('Logging.service log message: ',
       message);
   }
+
 }

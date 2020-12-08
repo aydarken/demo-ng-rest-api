@@ -1,4 +1,10 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {UserService} from "../services/user.service";
+import {HeaderDataService} from "../services/header-data.service";
+import {User} from "../home/user";
+import {CustomerService} from "../services/customer.service";
+import {Customer} from "./customer";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-profile',
@@ -9,20 +15,26 @@ export class ProfileComponent implements OnInit {
   profilePhoto = '/assets/image/profile-image.png';
   fullName = 'username';
   companyName = 'Name of organization';
+  customerList: Customer = new Customer();
 
-  databases = ['first data base', 'second data base'];
-  database: string;
-
-  constructor() {
+  constructor(private userService: UserService,
+              private headerDataService: HeaderDataService,
+              private customerService: CustomerService) {
   }
-  @Output() newItemEvent = new EventEmitter<string[]>();
 
-  addDatabase(){
-    this.databases.push(this.database);
+  userList: User[] = this.userService.getUserList();
+  databaseList: Customer[] = this.customerService.getCustomerList();
+
+
+  addDatabase() {
+    console.log('added database ' + this.customerList.databaseName);
+    this.customerService.setCustomerList(this.customerList);
   }
 
   ngOnInit(): void {
-    this.newItemEvent.emit(this.databases);
+    this.userList = this.userService.getUserList();
+    this.headerDataService.getCurrentUrl();
+    this.headerDataService.setCurrentPage('Profile');
   }
 
 }

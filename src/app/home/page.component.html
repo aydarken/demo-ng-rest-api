@@ -1,34 +1,37 @@
   <h1>Fill in for storage in the base</h1>
-<form>
+<form #userForm ="ngForm" (ngSubmit)="onSubmit(userForm)" *ngIf="userList">
   <div class="form-group">
     <div class="row">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="First name" required>
+      <div class="col" >
+        <input type="text" class="form-control" name="firstName" placeholder="First name" [(ngModel)]="userList.firstName" required pattern="^[a-zA-Z]+$">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Last name" required>
+        <input type="text" class="form-control" name="lastName" placeholder="Last name" [(ngModel)]="userList.lastName" required pattern="^[a-zA-Z]+$">
       </div>
     </div>
   </div>
   <div class="form-group">
     <label for="phone-number">Phone Number</label>
-    <input type="number" class="form-control" id="phone-number" placeholder="+7(777)777-77-77" required>
+    <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7 777 777 77 77" [(ngModel)]="userList.phoneNumber" required>
   </div>
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" [(ngModel)]="userList.email" required>
   </div>
   <div class="form-group">
     <label for="formSelect">Select your organization</label>
-    <select multiple class="form-control" id="formSelect" required>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
+    <select multiple class="form-control" id="formSelect" name="organization" [(ngModel)]="userList.organization">
+      <option *ngFor="let organizations of customerOrganization">{{organizations.companyName}}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="formControlTextarea1">Your message(optional)</label>
-    <textarea class="form-control" id="formControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="formControlTextarea1" name="message" rows="3" [(ngModel)]="userList.message"></textarea>
   </div>
   <button class="btn btn-success" type="submit">Send</button>
+  <b>valid</b> {{userForm.valid}}
+  <b>touched</b> {{userForm.touched}}
+  <b>pristine</b> {{userForm.pristine}}
+  <b>dirty</b> {{userForm.dirty}}
+
 </form>
