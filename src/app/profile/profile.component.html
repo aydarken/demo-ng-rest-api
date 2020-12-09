@@ -4,7 +4,7 @@
     <img [src]="profilePhoto" alt="user photo" width="160px" height="160px" class="left">
     <div class="text-info">
       <h3>Name: {{fullName}}</h3>
-      <h3>Company: {{companyName}}</h3>
+      <h3>Company: {{companyname}}</h3>
     </div>
   </div>
   <div class="databases">
@@ -29,26 +29,63 @@
     <div class="form-group">
       <div class="row">
         <div class="col">
-          <input type="text" class="form-control" name="databaseName" placeholder="Database name" [(ngModel)]="customerList.databaseName"
+          <input type="text" class="form-control" name="databaseName" placeholder="Database name"
+                 #databaseName="ngModel" [(ngModel)]="customerList.databaseName" minlength="6" maxlength="15"
+                 pattern="[a-zA-Z0-9]"
                  required>
+          <div *ngIf="!databaseName?.valid && (databaseName?.dirty ||databaseName?.touched)" style="color: #ff0000">
+            Invalid database name
+            <div *ngIf="databaseName.errors.required">
+              database name is required
+            </div>
+            <div *ngIf="databaseName.errors.minlength">
+              database name Minimum Length is
+              {{databaseName.errors.minlength?.requiredLength}}
+            </div>
+          </div>
         </div>
         <div class="col">
-          <input type="text" class="form-control" name="companyName" placeholder="Company name" [(ngModel)]="customerList.companyName" required>
+          <input type="text" class="form-control" name="companyName" placeholder="Company name" #companyName="ngModel"
+                 [(ngModel)]="customerList.companyName" required minlength="6" maxlength="20">
+          <div *ngIf="!companyName?.valid && (companyName?.dirty ||companyName?.touched)" style="color: red">
+            Invalid company name
+            <div *ngIf="companyName.errors.required">
+              company name is required
+            </div>
+            <div *ngIf="companyName.errors.minlength">
+              company name Minimum Length is
+              {{companyName.errors.minlength?.requiredLength}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="form-group">
       <label for="phone-number">Phone Number</label>
-      <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7(777)777-77-77" [(ngModel)]="customerList.phoneNumber" required>
+      <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7(777)777-77-77"
+             #phoneNumber="ngModel" [(ngModel)]="customerList.phoneNumber" required [maxLength]="12" minlength="11"
+             pattern="^(8|+7)[0-9]{10}">
+      <div *ngIf="!phoneNumber?.valid && (phoneNumber?.dirty ||phoneNumber?.touched)" style="color: red">
+        Invalid phone number
+        <div *ngIf="phoneNumber.errors.required">
+          phone number is required
+        </div>
+        <div *ngIf="phoneNumber.errors.minlength">
+          phone number Minimum Length is
+          {{phoneNumber.errors.minlength?.requiredLength}}
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" [(ngModel)]="customerList.email"
+      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+             [(ngModel)]="customerList.email"
              required>
     </div>
     <div class="form-group">
       <label for="formControlTextarea1">Your message to clients</label>
-      <textarea class="form-control" id="formControlTextarea1" name="message" rows="3" [(ngModel)]="customerList.message"></textarea>
+      <textarea class="form-control" id="formControlTextarea1" name="message" rows="3"
+                [(ngModel)]="customerList.message"></textarea>
     </div>
     <button class="btn btn-success" type="submit">Send</button>
   </form>

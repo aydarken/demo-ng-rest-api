@@ -14,7 +14,7 @@ import {NgForm} from "@angular/forms";
 export class ProfileComponent implements OnInit {
   profilePhoto = '/assets/image/profile-image.png';
   fullName = 'username';
-  companyName = 'Name of organization';
+  companyname = 'Name of organization';
   customerList: Customer = new Customer();
 
   constructor(private userService: UserService,
