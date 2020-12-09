@@ -1,25 +1,24 @@
 import {Injectable} from '@angular/core';
 import {LoggingService} from './logging.service';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class HeaderDataService {
-  private currentPage = 'Home';
+  private currentPage = ' ';
 
-  constructor(
-    private loggingService: LoggingService) {
+  constructor(private router: Router) {
   }
 
   getCurrentUrl() {
-    const currentUrl = window.location.href;
-    console.log('current url ' + currentUrl);
-  }
-
-  setCurrentPage(currentPage: string) {
-    this.currentPage = currentPage;
+    // const currentUrl = window.location.href;
+    // console.log('current url ' + currentUrl);
+    this.currentPage = this.router.url;
+    console.log('current url ' + this.currentPage);
   }
 
   getCurrentPage(): string {
-    return this.currentPage;
+    console.log('hi' + this.currentPage);
+    return this.currentPage = this.router.url;
   }
 
 }

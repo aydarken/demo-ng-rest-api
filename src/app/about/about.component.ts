@@ -13,7 +13,7 @@ export class AboutComponent implements OnInit {
   constructor(private headerData: HeaderDataService) { }
 
   ngOnInit(): void {
-    this.headerData.setCurrentPage('About');
+    this.headerData.getCurrentUrl();
   }
 
 }

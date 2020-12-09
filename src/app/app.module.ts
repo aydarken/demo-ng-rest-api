@@ -14,6 +14,7 @@ import {UserService} from "./services/user.service";
 import {CustomerService} from "./services/customer.service";
 import {HeaderDataService} from "./services/header-data.service";
 import {LoggingService} from "./services/logging.service";
+import {GuardService} from "./guard/guard.service";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import {LoggingService} from "./services/logging.service";
     CustomerService,
     HeaderDataService,
     LoggingService,
+    GuardService,
+    ProfileComponent
   ],
   bootstrap: [AppComponent]
 })

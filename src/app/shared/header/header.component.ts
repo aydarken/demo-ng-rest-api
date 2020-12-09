@@ -13,7 +13,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.page = this.headerData.getCurrentPage();
+    // this.page = this.headerData.getCurrentPage();
+
   }
 
 }

@@ -20,7 +20,7 @@ export class PageComponent implements OnInit {
   customerOrganization: Customer[] = this.customerService.getCustomerList();
 
   ngOnInit(): void {
-    this.headerData.setCurrentPage('Home');
+    this.headerData.getCurrentUrl();
   }
 
   onSubmit(userForm: NgForm) {

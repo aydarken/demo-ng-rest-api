@@ -1,36 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
-  CanDeactivate,
-  Resolve,
-  RouterStateSnapshot,
-  UrlTree
+  CanActivate, CanLoad, Route,
+  Router,
+  RouterStateSnapshot, UrlSegment, UrlTree,
 } from '@angular/router';
-import {Observable} from 'rxjs';
+import {UserService} from "../services/user.service";
+import {Observable} from "rxjs";
+import {HeaderDataService} from "../services/header-data.service";
 
 @Injectable()
-export class GuardService implements CanActivate, CanDeactivate<any>, Resolve<any>   {
-  login = false;
+export class GuardService implements CanLoad {
 
-  constructor() { }
-  // to open the profile page
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
-    console.log('we are in canActivate method!');
+  constructor() {
+  }
 
-    if (!this.userService.isLoggedIn()) {
-      this.router.navigate(['login']);
-      return false;
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+    let url: string = route.path;
+    console.log('Url:' + url);
+    if (url == 'admin') {
+      alert('You are visiting admin pages');
+      return true;
     }
-
+    alert('Not admin');
     return true;
   }
-  // when fill the form
-  canDeactivate(component: any, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): Observable<boolean | UrlTree>{
-    return undefined;
-  }
-  // when fill the form and submit it
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    return undefined;
-  }
+
 }

@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userList = this.userService.getUserList();
     this.headerDataService.getCurrentUrl();
-    this.headerDataService.setCurrentPage('Profile');
   }
 
 }
