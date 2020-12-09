@@ -12,11 +12,11 @@
   </div>
   <div class="form-group">
     <label for="phone-number">Phone Number</label>
-    <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7 777 777 77 77" [(ngModel)]="userList.phoneNumber" required>
+    <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7 777 777 77 77" [(ngModel)]="userList.phoneNumber" required [maxLength]="11" minlength="11">
   </div>
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" [(ngModel)]="userList.email" required>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" [(ngModel)]="userList.email" required email>
   </div>
   <div class="form-group">
     <label for="formSelect">Select your organization</label>
@@ -29,9 +29,5 @@
     <textarea class="form-control" id="formControlTextarea1" name="message" rows="3" [(ngModel)]="userList.message"></textarea>
   </div>
   <button class="btn btn-success" type="submit">Send</button>
-  <b>valid</b> {{userForm.valid}}
-  <b>touched</b> {{userForm.touched}}
-  <b>pristine</b> {{userForm.pristine}}
-  <b>dirty</b> {{userForm.dirty}}
 
 </form>
