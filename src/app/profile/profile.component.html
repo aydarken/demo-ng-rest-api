@@ -40,7 +40,7 @@
             </div>
             <div *ngIf="databaseName.errors.minlength">
               database name Minimum Length is
-              {{databaseName.errors.minlength?.requiredLength}}
+              {{databaseName.errors.minlength}}
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
             </div>
             <div *ngIf="companyName.errors.minlength">
               company name Minimum Length is
-              {{companyName.errors.minlength?.requiredLength}}
+              {{companyName.errors.minlength}}
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
       <label for="phone-number">Phone Number</label>
       <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7(777)777-77-77"
              #phoneNumber="ngModel" [(ngModel)]="customerList.phoneNumber" required [maxLength]="12" minlength="11"
-             pattern="^(8|+7)[0-9]{10}">
+             pattern="^(8|\+7)[0-9]{10}">
       <div *ngIf="!phoneNumber?.valid && (phoneNumber?.dirty ||phoneNumber?.touched)" style="color: red">
         Invalid phone number
         <div *ngIf="phoneNumber.errors.required">
@@ -72,7 +72,7 @@
         </div>
         <div *ngIf="phoneNumber.errors.minlength">
           phone number Minimum Length is
-          {{phoneNumber.errors.minlength?.requiredLength}}
+          {{phoneNumber.errors.minlength}}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {User} from "./user";
 import {UserService} from "../services/user.service";
 import {HeaderDataService} from "../services/header-data.service";
@@ -13,19 +13,30 @@ import {Customer} from "../profile/customer";
 })
 export class PageComponent implements OnInit {
   userList: User = new User();
+
   constructor(private userService: UserService,
               private headerData: HeaderDataService,
               private customerService: CustomerService) {
   }
-  customerOrganization: Customer[] = this.customerService.getCustomerList();
+
+  customers: Customer[];
 
   ngOnInit(): void {
     this.headerData.getCurrentUrl();
+    this.customerService.getCustomers()
+      .subscribe(
+        data => this.customers = data
+      );
   }
 
   onSubmit(userForm: NgForm) {
-    console.log('user list ' + this.userList.firstName);
-    console.log('user company ' + this.userList.organization);
-    this.userService.setUserList(this.userList);
+    console.log('user list ' + this.userList);
+    this.userService.postUser(this.userList)
+      .subscribe(
+        data => {
+          console.log(data);
+          alert('User added successfully ' + data.id);
+        }
+      );
   }
 }

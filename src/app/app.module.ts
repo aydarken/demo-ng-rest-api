@@ -15,6 +15,8 @@ import {CustomerService} from "./services/customer.service";
 import {HeaderDataService} from "./services/header-data.service";
 import {LoggingService} from "./services/logging.service";
 import {GuardService} from "./guard/guard.service";
+import {HttpClientModule} from "@angular/common/http";
+import {AdminPageComponent} from "./admin/admin-page.component";
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import {GuardService} from "./guard/guard.service";
     HeaderComponent,
     PageComponent,
     AboutComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     UserService,

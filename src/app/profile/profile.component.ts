@@ -1,10 +1,9 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user.service";
 import {HeaderDataService} from "../services/header-data.service";
 import {User} from "../home/user";
 import {CustomerService} from "../services/customer.service";
 import {Customer} from "./customer";
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-profile',
@@ -22,18 +21,29 @@ export class ProfileComponent implements OnInit {
               private customerService: CustomerService) {
   }
 
-  userList: User[] = this.userService.getUserList();
-  databaseList: Customer[] = this.customerService.getCustomerList();
+  userList: User[];
+  databaseList: Customer[];
 
 
   addDatabase() {
     console.log('added database ' + this.customerList.databaseName);
-    this.customerService.setCustomerList(this.customerList);
+    console.log('added database ' + this.customerList);
+
+    this.customerService.postCustomer(this.customerList)
+      .subscribe(
+        data => {
+          console.log(data);
+          alert('User added successfully ' + data.id);
+        }
+      );
   }
 
-  ngOnInit(): void {
-    this.userList = this.userService.getUserList();
+  ngOnInit() {
+    this.customerService.getCustomers()
+      .subscribe(data => this.databaseList = data);
     this.headerDataService.getCurrentUrl();
+    this.userService.getUsers()
+      .subscribe(data => this.userList = data);
   }
 
 }

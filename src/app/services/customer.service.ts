@@ -1,22 +1,34 @@
 import {Injectable} from '@angular/core';
-import {LoggingService} from './logging.service';
 import {Customer} from "../profile/customer";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {LoggingService} from "./logging.service";
 
 @Injectable()
 export class CustomerService {
-  private customerList: Customer[] = new Array();
+  private apiCustomerUrl = 'http://localhost:3000/customers';
+  private headers = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*');
 
 
-  constructor() {
+  constructor(private http: HttpClient,
+              private loggingService: LoggingService) {
   }
 
-  getCustomerList(): Customer[] {
-    return this.customerList;
+  getCustomers() {
+    this.loggingService.log('List of customers:' + this.http.get<Customer[]>(this.apiCustomerUrl));
+
+    return this.http.get<Customer[]>(this.apiCustomerUrl);
   }
 
-  setCustomerList(value: Customer) {
-    this.customerList.push(value);
+  postCustomer(value: Customer): Observable<any> {
+    const API_URL = `${this.apiCustomerUrl}`;
+
+    return this.http.post(API_URL, value, {headers: this.headers});
   }
 
+  isLoggedIn(): boolean {
+    return true;
+  }
 
 }

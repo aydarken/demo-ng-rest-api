@@ -37,7 +37,7 @@
     <label for="phone-number">Phone Number</label>
     <input type="number" class="form-control" id="phone-number" name="phoneNumber" placeholder="+7 777 777 77 77"
            #phoneNumber="ngModel" [(ngModel)]="userList.phoneNumber" required [maxLength]="12" minlength="11"
-           pattern="^(8|+7)[0-9]{10}">
+           pattern="^(8|\+7)[0-9]{10}">
     <div *ngIf="!phoneNumber?.valid && (phoneNumber?.dirty ||phoneNumber?.touched)" style="color: red">
       Invalid phone number
       <div *ngIf="phoneNumber.errors.required">
@@ -57,7 +57,7 @@
   <div class="form-group">
     <label for="formSelect">Select your organization</label>
     <select multiple class="form-control" id="formSelect" name="organization" [(ngModel)]="userList.organization">
-      <option *ngFor="let organizations of customerOrganization">{{organizations.companyName}}</option>
+      <option *ngFor="let organizations of customers">{{organizations.companyName}}</option>
     </select>
   </div>
   <div class="form-group">
